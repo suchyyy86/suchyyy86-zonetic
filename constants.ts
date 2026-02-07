@@ -56,31 +56,59 @@ export const CONTENT = {
   },
   services: {
     tag: { CZ: 'CO NABÍZÍME', EN: 'WHAT WE OFFER' },
-    headline: { CZ: 'Digitální expertíza pro váš byznys', EN: 'Digital Expertise For Your Business' },
+    headline: { CZ: 'Co nabízíme?', EN: 'What We Offer?' },
     subheadline: {
       CZ: 'Nabízíme špičková řešení v klíčových oblastech online světa. Vyberte si konkrétní službu, kterou váš projekt právě potřebuje.',
       EN: 'We offer cutting-edge solutions across key areas of the digital world. Select the specific service your project requires.'
     },
     items: [
       {
-        title: { CZ: 'Weby a Aplikace', EN: 'Webs & Apps' },
-        description: { CZ: 'Vývoj zaměřený na škálovatelnost a striktní mobile-first přístup.', EN: 'Development focused on scalability and a strict mobile-first approach.' },
+        title: { CZ: 'Výkonné weby & aplikace', EN: 'Performance Webs & Apps' },
+        description: {
+          CZ: 'Unikátní design. Bezchybný kód. Aplikace, které prodávají.',
+          EN: 'Unique design. Flawless code. Apps that sell.'
+        },
+        benefits: {
+          CZ: ['💎 Silná digitální identita', '🤝 Okamžitá důvěra klientů', '📈 Proměna návštěvníků v partnery'],
+          EN: ['💎 Strong digital identity', '🤝 Instant client trust', '📈 Converting visitors into partners']
+        },
         iconName: 'code'
       },
       {
-        title: { CZ: 'Digitální Design', EN: 'Digital Design' },
-        description: { CZ: 'Estetická dokonalost, intuitivní UX a Motion Design, který dýchá životem.', EN: 'Aesthetic perfection, intuitive UX, and Motion Design that breathes life.' },
-        iconName: 'design'
-      },
-      {
-        title: { CZ: 'Sociální Sítě', EN: 'Social Media' },
-        description: { CZ: 'Strategické plánování a kreativní správa obsahu pro udržitelný růst značky.', EN: 'Strategic planning and creative content management for sustainable brand growth.' },
+        title: { CZ: 'Digitální růst & Obsah', EN: 'Digital Growth & Content' },
+        description: {
+          CZ: 'Obsah, který není jen vidět, ale skutečně prodává.',
+          EN: 'Content that isn\'t just seen, but effectively sells.'
+        },
+        benefits: {
+          CZ: ['🔥 Stabilní přísun poptávek', '❤️ Komunita věrných zákazníků', '🏆 Dominantní postavení na trhu'],
+          EN: ['🔥 Steady stream of leads', '❤️ Loyal customer community', '🏆 Dominant market position']
+        },
         iconName: 'share'
       },
       {
-        title: { CZ: 'Hosting a Domény', EN: 'Hosting & Domains' },
-        description: { CZ: 'Absolutní stabilita, 24/7 monitoring a nekompromisní kybernetická bezpečnost.', EN: 'Absolute stability, 24/7 monitoring, and uncompromising cyber security.' },
+        title: { CZ: 'AI & Automatizace procesů', EN: 'AI & Process Automation' },
+        description: {
+          CZ: 'Méně rutiny, více zisku. Nechte technologie pracovat za vás.',
+          EN: 'Less routine, more profit. Let technology work for you.'
+        },
+        benefits: {
+          CZ: ['⚡ Radikální snížení nákladů', '✅ Eliminace lidských chyb', '🚀 Škálovatelnost byznysu'],
+          EN: ['⚡ Radical cost reduction', '✅ Elimination of human errors', '🚀 Business scalability']
+        },
         iconName: 'server'
+      },
+      {
+        title: { CZ: 'Managed Cloud & Support', EN: 'Managed Cloud & Support' },
+        description: {
+          CZ: 'Maximální rychlost, nulové výpadky. Vaše data v bezpečí.',
+          EN: 'Maximum speed, zero downtime. Your data safe.'
+        },
+        benefits: {
+          CZ: ['🛡️ Nulové výpadky příjmů', '🔒 Maximální bezpečnost dat', '🧘 Absolutní klid pro podnikání'],
+          EN: ['🛡️ Zero revenue downtime', '🔒 Maximum data security', '🧘 Total peace of mind']
+        },
+        iconName: 'design'
       }
     ] as ServiceData[]
   },

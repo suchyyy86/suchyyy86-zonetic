@@ -45,12 +45,12 @@ function App() {
     // It's a section link (e.g. #services)
     if (href.startsWith('#')) {
       const elementId = href.substring(1);
-      
+
       if (currentView !== 'landing') {
         // If we are on detail page, go to landing first
         setCurrentView('landing');
         setActiveProjectId(null);
-        
+
         // Wait for render cycle to ensure DOM elements exist
         setTimeout(() => {
           const element = document.getElementById(elementId);
@@ -68,23 +68,23 @@ function App() {
     }
   };
 
-  const activeProject = activeProjectId 
+  const activeProject = activeProjectId
     ? CONTENT.showcase.projects.find(p => p.id === activeProjectId) || CONTENT.showcase.projects[0]
     : CONTENT.showcase.projects[0];
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 selection:bg-teal-500/30 selection:text-teal-200">
-      <Header 
-        lang={lang} 
-        setLang={setLang} 
+      <Header
+        lang={lang}
+        setLang={setLang}
         onNavigate={handleSectionNavigation}
       />
-      
+
       {currentView === 'landing' ? (
         <>
           {/* Hero is fixed in the background (Z-Index 0) only on landing page */}
           <Hero lang={lang} />
-          
+
           {/* 
             Main content wrapper. 
             - Z-Index 10 ensures it sits ON TOP of the fixed hero.
@@ -92,8 +92,8 @@ function App() {
             - bg-slate-950 ensures it's opaque and covers the hero as it scrolls up.
           */}
           <div className="relative z-10 bg-slate-900 mt-[100vh] shadow-[0_-20px_50px_rgba(0,0,0,0.8)] border-t border-slate-900/50">
-            <Showcase lang={lang} onNavigate={handleNavigateProject} />
             <Services lang={lang} />
+            <Showcase lang={lang} onNavigate={handleNavigateProject} />
             <Benefits lang={lang} />
             <TechStack lang={lang} />
             <Contact lang={lang} />
@@ -103,10 +103,10 @@ function App() {
       ) : (
         // Detailed Project View
         <div className="relative z-10 bg-slate-950">
-          <ProjectDetail 
-            project={activeProject} 
-            lang={lang} 
-            onBack={handleBack} 
+          <ProjectDetail
+            project={activeProject}
+            lang={lang}
+            onBack={handleBack}
           />
           <Footer lang={lang} />
         </div>

@@ -20,6 +20,7 @@ export interface ProjectData {
 export interface ServiceData {
   title: ContentSection;
   description: ContentSection;
+  benefits: { CZ: string[]; EN: string[] };
   iconName: string;
 }
 

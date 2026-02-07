@@ -36,10 +36,10 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
 
       const scrollY = window.scrollY;
       const windowHeight = window.innerHeight;
-      
+
       // Calculate scroll progress (0 to 1) for the hero section
       const scrollProgress = Math.min(scrollY / windowHeight, 1);
-      
+
       // Effects based on scroll
       const scaleValue = 1 - (scrollProgress * 0.15); // Recedes to 85% size
       const blurValue = scrollProgress * 10; // Blurs up to 10px
@@ -47,8 +47,8 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
 
       // Apply Global Hero Container transformations (The "Go Backwards" & "Blur" effect)
       if (containerRef.current) {
-         containerRef.current.style.filter = `blur(${blurValue}px)`;
-         containerRef.current.style.opacity = `${opacityValue}`;
+        containerRef.current.style.filter = `blur(${blurValue}px)`;
+        containerRef.current.style.opacity = `${opacityValue}`;
       }
 
       // 1. Wrapper (Scroll Scale & Translate) - Affects BOTH Text and Buttons
@@ -108,27 +108,27 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
   }, []);
 
   return (
-    <section 
-      ref={containerRef} 
+    <section
+      ref={containerRef}
       className="fixed top-0 left-0 w-full h-screen flex items-center justify-center overflow-hidden bg-slate-950 z-0"
     >
       {/* 3D Background Space */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-        
+
         {/* Dynamic Grid Floor - Increased opacity from 0.07 to 0.15 */}
-        <div 
+        <div
           ref={gridRef}
           className="absolute inset-[-100%] origin-center bg-[linear-gradient(rgba(20,184,166,0.15)_1px,transparent_1px),linear-gradient(90deg,rgba(20,184,166,0.15)_1px,transparent_1px)] bg-[size:60px_60px]"
           style={{ transform: 'perspective(1000px) rotateX(60deg) scale(2)' }}
         ></div>
 
         {/* Floating Light Blobs - Increased opacity from 60/50 to 80/70 */}
-        <div 
+        <div
           ref={blob1Ref}
           className="absolute top-[10%] left-[20%] w-[40vw] h-[40vw] rounded-full bg-teal-500/30 blur-[100px] mix-blend-screen opacity-80"
         ></div>
-        
-        <div 
+
+        <div
           ref={blob2Ref}
           className="absolute bottom-[10%] right-[20%] w-[35vw] h-[35vw] rounded-full bg-indigo-600/30 blur-[100px] mix-blend-screen opacity-70"
         ></div>
@@ -139,12 +139,12 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
       </div>
 
       {/* Main Content Layer */}
-      <div 
-        ref={wrapperRef} 
+      <div
+        ref={wrapperRef}
         className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full transition-transform duration-75 ease-out will-change-transform"
       >
         <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
-          
+
           {/* Inner Text Wrapper for Mouse Parallax */}
           <div ref={contentRef} className="flex flex-col items-center w-full">
             {/* Badge */}
@@ -170,7 +170,7 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
 
           {/* CTA Group - STATIC (Outside contentRef but inside wrapperRef) */}
           <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-            <Button onClick={() => document.getElementById('contact')?.scrollIntoView({behavior: 'smooth'})} className="group relative overflow-hidden">
+            <Button onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })} className="group relative overflow-hidden">
               <span className="relative z-10 flex items-center">
                 {CONTENT.hero.cta[lang]}
                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -178,7 +178,7 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
               <div className="absolute inset-0 bg-gradient-to-r from-teal-400 to-teal-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </Button>
             <Button variant="outline" onClick={() => {
-               window.scrollTo({ top: window.innerHeight, behavior: 'smooth' });
+              window.scrollTo({ top: window.innerHeight, behavior: 'smooth' });
             }} className="backdrop-blur-sm bg-slate-950/30 border-teal-500/50 hover:bg-teal-500/10">
               {lang === 'CZ' ? 'Prohlédnout práci' : 'View Work'}
             </Button>
@@ -188,14 +188,14 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
       </div>
 
       {/* Scroll indicator */}
-      <div 
-        className="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-slate-500 animate-bounce cursor-pointer z-20" 
+      <div
+        className="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-slate-500 animate-bounce cursor-pointer z-20"
         onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}
       >
         <ChevronDown size={32} className="opacity-70 hover:opacity-100 transition-opacity" />
       </div>
 
-      <style jsx>{`
+      <style>{`
         @keyframes gradient {
           0% { background-position: 0% 50%; }
           50% { background-position: 100% 50%; }

@@ -38,14 +38,11 @@ const Header: React.FC<HeaderProps> = ({ lang, setLang, onNavigate }) => {
         <div className="flex justify-between items-center">
           {/* Logo */}
           <div className="flex items-center gap-2 cursor-pointer" onClick={() => onNavigate('#root')}>
-            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-teal-500">
-              <path d="M10 10H30L10 30H30" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
-              <circle cx="28" cy="12" r="3" fill="currentColor" />
-              <circle cx="12" cy="28" r="3" fill="currentColor" />
-            </svg>
-            <div className="flex flex-col justify-center">
-              <span className="text-2xl font-bold tracking-tighter text-white leading-none">Zonetic</span>
-            </div>
+            <img
+              src="./images/zonetic_logo.png"
+              alt="Zonetic Logo"
+              className="h-10 w-auto"
+            />
           </div>
 
           {/* Desktop Nav */}

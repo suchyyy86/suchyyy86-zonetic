@@ -147,11 +147,7 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
 
           {/* Inner Text Wrapper for Mouse Parallax */}
           <div ref={contentRef} className="flex flex-col items-center w-full">
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-teal-500/30 bg-teal-500/10 text-teal-300 text-xs font-bold tracking-widest uppercase mb-8 backdrop-blur-sm shadow-[0_0_15px_rgba(20,184,166,0.3)]">
-              <span className="w-2 h-2 rounded-full bg-teal-400 animate-pulse"></span>
-              {CONTENT.hero.badge[lang]}
-            </div>
+
 
             {/* Headline */}
             <h1 className="text-5xl sm:text-7xl md:text-8xl font-extrabold text-white tracking-tight leading-[1.1] mb-8 drop-shadow-2xl">
@@ -180,7 +176,7 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
             <Button variant="outline" onClick={() => {
               window.scrollTo({ top: window.innerHeight, behavior: 'smooth' });
             }} className="backdrop-blur-sm bg-slate-950/30 border-teal-500/50 hover:bg-teal-500/10">
-              {lang === 'CZ' ? 'Prohlédnout práci' : 'View Work'}
+              {CONTENT.hero.ctaSecondary[lang]}
             </Button>
           </div>
 

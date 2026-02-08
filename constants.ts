@@ -11,15 +11,15 @@ export const CONTENT = {
     ] as NavLink[]
   },
   hero: {
-    badge: { CZ: 'INOVACE PRO ROK 2026', EN: 'INNOVATION FOR 2026' },
     headlineStart: { CZ: 'Architekti', EN: 'Architects of' },
     headlineAccent: { CZ: 'Vaší Digitální', EN: 'Your Digital' },
     headlineEnd: { CZ: 'Budoucnosti', EN: 'Future' },
     subheadline: {
-      CZ: 'Strategická dominance díky spojení technologické preciznosti, agilního vývoje a maximální nákladové efektivity. Definujeme nové standardy stability.',
-      EN: 'Strategic dominance through the fusion of technological precision, agile development, and maximum cost efficiency. We define new standards of stability.'
+      CZ: 'Stavíme digitální produkty, které definují trh. Rychlost, design a škálovatelnost bez kompromisů.',
+      EN: 'We build digital products that define the market. Speed, design, and scalability without compromise.'
     },
-    cta: { CZ: 'Spojit se s námi', EN: 'Get in touch' }
+    cta: { CZ: 'Spojit se s námi', EN: 'Get in touch' },
+    ctaSecondary: { CZ: 'Prohlédnout demo', EN: 'View Demo' }
   },
   showcase: {
     headline: { CZ: 'Naše Standardy', EN: 'Our Standards' },

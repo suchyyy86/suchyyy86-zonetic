@@ -50,9 +50,13 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, index, isVisible, la
         hover:scale-[1.02] hover:shadow-2xl hover:shadow-teal-900/20 hover:border-teal-500/30
       `}
       style={{
-        transitionDelay: `${index * 50}ms`,
+        transitionDelay: `${index * 150 + 200}ms`, // Slower start (200ms) + bigger gap between cards
+        transitionDuration: '1500ms', // Super smooth slow motion
+        transitionTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)', // Smooth quintic ease-out
         opacity: isVisible ? 1 : 0,
-        transform: isVisible ? 'translateY(0)' : 'translateY(40px)',
+        transform: isVisible
+          ? 'translateY(0) scale(1) rotate(0deg)'
+          : 'translateY(60px) scale(0.9) rotate(2deg)',
         backdropFilter: 'blur(10px)',
       }}
     >
@@ -149,8 +153,8 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, index, isVisible, la
             {/* Benefits List */}
             <ul className="space-y-5">
               {service.benefits[lang].map((benefit, i) => (
-                <li key={i} className="flex items-start text-teal-100 text-base font-medium leading-normal">
-                  <span className="mr-3 mt-0.5 inline-block origin-center hover:scale-125 transition-transform cursor-help text-lg">
+                <li key={i} className="group/benefit flex items-start text-teal-100 text-base font-medium leading-normal">
+                  <span className="mr-3 inline-block transform-gpu origin-center group-hover/benefit:scale-125 transition-transform duration-300 cursor-default text-lg select-none">
                     {/* The benefit string already contains the emoji */}
                     {benefit.split(' ')[0]}
                   </span>

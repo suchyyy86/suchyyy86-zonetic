@@ -77,8 +77,8 @@ export const CONTENT = {
       {
         title: { CZ: 'Digitální růst & Obsah', EN: 'Digital Growth & Content' },
         description: {
-          CZ: 'Obsah, který není jen vidět, ale *skutečně prodává*.',
-          EN: 'Content that isn\'t just seen, but *effectively sells*.'
+          CZ: '*Kreativní strategie*. *Poutavý obsah*. Značka, kterou *nelze přehlédnout*.',
+          EN: '*Creative strategy*. *Engaging content*. A brand that *cannot be overlooked*.'
         },
         benefits: {
           CZ: ['🔥 Stabilní přísun poptávek', '❤️ Komunita věrných zákazníků', '🏆 Dominantní postavení na trhu'],

@@ -31,6 +31,15 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, index, isVisible, la
     setPosition({ x: e.clientX - rect.left, y: e.clientY - rect.top });
   };
 
+  const renderDescription = (text: string) => {
+    return text.split('*').map((part, index) => {
+      if (index % 2 === 1) {
+        return <span key={index} className="text-teal-400 font-semibold">{part}</span>;
+      }
+      return part;
+    });
+  };
+
   return (
     <div
       ref={divRef}
@@ -66,6 +75,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, index, isVisible, la
 
           {/* Badge Container - Fixed to Top Right */}
           <div className="absolute top-0 right-0 z-30 pointer-events-none">
+
             <div className={`
                 flex items-center justify-center
                 w-10 h-10 rounded-full border border-white/10 bg-slate-800/50 backdrop-blur-md
@@ -114,13 +124,13 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, index, isVisible, la
 
           {/* Default State: Description */}
           <p className={`
-            text-slate-400 text-base leading-relaxed
+            text-slate-400 text-lg leading-loose
             absolute inset-0
             transition-all duration-500 ease-out-quint
             delay-300 group-hover:delay-0
             group-hover:opacity-0 group-hover:-translate-y-4
           `}>
-            {service.description[lang]}
+            {renderDescription(service.description[lang])}
           </p>
 
           {/* Hover State: Benefits List */}
@@ -132,14 +142,14 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, index, isVisible, la
           `}>
 
             {/* New Heading */}
-            <h4 className="text-teal-400 text-base font-bold uppercase tracking-wide mb-4">
+            <h4 className="text-teal-400 text-base font-bold uppercase tracking-wide mb-6">
               {lang === 'CZ' ? 'Přínos pro váš byznys' : 'Impact on your business'}
             </h4>
 
             {/* Benefits List */}
-            <ul className="space-y-3">
+            <ul className="space-y-5">
               {service.benefits[lang].map((benefit, i) => (
-                <li key={i} className="flex items-start text-teal-100 text-sm font-medium leading-normal">
+                <li key={i} className="flex items-start text-teal-100 text-base font-medium leading-normal">
                   <span className="mr-3 mt-0.5 inline-block origin-center hover:scale-125 transition-transform cursor-help text-lg">
                     {/* The benefit string already contains the emoji */}
                     {benefit.split(' ')[0]}

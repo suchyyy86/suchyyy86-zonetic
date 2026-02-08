@@ -65,8 +65,8 @@ export const CONTENT = {
       {
         title: { CZ: 'Výkonné weby & aplikace', EN: 'Performance Webs & Apps' },
         description: {
-          CZ: 'Unikátní design. Bezchybný kód. Aplikace, které prodávají.',
-          EN: 'Unique design. Flawless code. Apps that sell.'
+          CZ: '*Unikátní design*. *Bezchybný kód*. Aplikace, které *prodávají*.',
+          EN: '*Unique design*. *Flawless code*. Apps that *sell*.'
         },
         benefits: {
           CZ: ['💎 Silná digitální identita', '🤝 Okamžitá důvěra klientů', '📈 Proměna návštěvníků v partnery'],
@@ -77,8 +77,8 @@ export const CONTENT = {
       {
         title: { CZ: 'Digitální růst & Obsah', EN: 'Digital Growth & Content' },
         description: {
-          CZ: 'Obsah, který není jen vidět, ale skutečně prodává.',
-          EN: 'Content that isn\'t just seen, but effectively sells.'
+          CZ: 'Obsah, který není jen vidět, ale *skutečně prodává*.',
+          EN: 'Content that isn\'t just seen, but *effectively sells*.'
         },
         benefits: {
           CZ: ['🔥 Stabilní přísun poptávek', '❤️ Komunita věrných zákazníků', '🏆 Dominantní postavení na trhu'],
@@ -89,8 +89,8 @@ export const CONTENT = {
       {
         title: { CZ: 'AI & Automatizace procesů', EN: 'AI & Process Automation' },
         description: {
-          CZ: 'Méně rutiny, více zisku. Nechte technologie pracovat za vás.',
-          EN: 'Less routine, more profit. Let technology work for you.'
+          CZ: '*Méně rutiny*, *více zisku*. Nechte technologie *pracovat za vás*.',
+          EN: '*Less routine*, *more profit*. Let *technology work for you*.'
         },
         benefits: {
           CZ: ['⚡ Radikální snížení nákladů', '✅ Eliminace lidských chyb', '🚀 Škálovatelnost byznysu'],
@@ -101,8 +101,8 @@ export const CONTENT = {
       {
         title: { CZ: 'Managed Cloud & Support', EN: 'Managed Cloud & Support' },
         description: {
-          CZ: 'Maximální rychlost, nulové výpadky. Vaše data v bezpečí.',
-          EN: 'Maximum speed, zero downtime. Your data safe.'
+          CZ: '*Maximální rychlost*, *nulové výpadky*. Vaše data *v bezpečí*.',
+          EN: '*Maximum speed*, *zero downtime*. Your data *safe*.'
         },
         benefits: {
           CZ: ['🛡️ Nulové výpadky příjmů', '🔒 Maximální bezpečnost dat', '🧘 Absolutní klid pro podnikání'],

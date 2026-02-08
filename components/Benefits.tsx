@@ -200,8 +200,8 @@ const Benefits: React.FC<BenefitsProps> = ({ lang }) => {
               </h2>
               <p className="text-lg text-slate-400 max-w-md leading-relaxed mb-8 border-l-2 border-slate-800 pl-6">
                 {lang === 'CZ'
-                  ? 'Nejsme jen vývojáři. Jsme strategičtí partneři, kteří mění způsob, jakým technologie slouží byznysu.'
-                  : 'We are not just developers. We are strategic partners changing the way technology serves business.'}
+                  ? 'Digitální svět se mění každým dnem. My zajistíme, aby váš byznys nejen stíhal tempo, ale udával směr. Technologie v našich rukou nejsou jen nástrojem, ale vaší konkurenční výhodou.'
+                  : 'The digital world changes every day. We ensure your business not only keeps up but leads the way. In our hands, technology is not just a tool, but your competitive advantage.'}
               </p>
 
               <div className="pl-1">

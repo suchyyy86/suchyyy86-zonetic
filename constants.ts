@@ -117,15 +117,15 @@ export const CONTENT = {
     items: [
       {
         title: { CZ: 'Agilní přístup', EN: 'Agile Approach' },
-        description: { CZ: 'Garantujeme rychlost doručení díky efektivním procesům bez zbytečné byrokracie.', EN: 'We guarantee delivery speed thanks to efficient processes without unnecessary bureaucracy.' }
+        description: { CZ: 'Dodáváme rychle a efektivně. Váš produkt dostaneme na trh v nejkratším možném čase, aniž bychom slevili z kvality.', EN: 'We deliver fast and efficiently. We get your product to market in the shortest possible time without compromising quality.' }
       },
       {
         title: { CZ: 'Vysoký poměr cena/výkon', EN: 'High Value/Cost Ratio' },
         description: { CZ: 'Špičková technologická řešení dostupná díky chytré optimalizaci vývoje.', EN: 'Top-tier technological solutions made accessible through smart development optimization.' }
       },
       {
-        title: { CZ: 'Technologická preciznost', EN: 'Technological Precision' },
-        description: { CZ: 'Moderní tech-stack zajišťující bezchybný chod na iPhonech, Androidech i desktopu.', EN: 'Modern tech-stack ensuring flawless operation on iPhones, Androids, and desktops.' }
+        title: { CZ: 'Technologický Náskok', EN: 'Technological Edge' },
+        description: { CZ: 'Stavíme na technologiích zítřka. AI, moderní frameworky a cloudová řešení integrujeme už dnes, aby váš byznys nezastarával, ale rostl.', EN: 'We build on the technologies of tomorrow. We integrate AI, modern frameworks, and cloud solutions today so your business doesn\'t age, but grows.' }
       }
     ] as BenefitData[]
   },

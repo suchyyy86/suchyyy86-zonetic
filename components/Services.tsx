@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Language, ServiceData } from '../types';
 import { CONTENT } from '../constants';
-import { Code, Share2, Server, PenTool, Sparkles, HelpCircle, MousePointerClick } from 'lucide-react';
+import { Code, Share2, Server, PenTool, Pointer, Bot } from 'lucide-react';
 
 interface ServicesProps {
   lang: Language;
@@ -11,7 +11,8 @@ const iconMap: Record<string, React.ReactNode> = {
   'code': <Code className="w-8 h-8" />,
   'share': <Share2 className="w-8 h-8" />,
   'server': <Server className="w-8 h-8" />,
-  'design': <PenTool className="w-8 h-8" />
+  'design': <PenTool className="w-8 h-8" />,
+  'ai': <Bot className="w-8 h-8" />
 };
 
 interface ServiceCardProps {
@@ -84,34 +85,6 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, index, isVisible, la
       <div className="relative h-full p-8 flex flex-col z-10">
         {/* Header: Icon & Title */}
         <div className="relative z-20">
-
-          {/* Badge Container - Fixed to Top Right */}
-          <div className="absolute top-0 right-0 z-30 pointer-events-none">
-
-            <div className={`
-                flex items-center justify-center
-                w-10 h-10 rounded-full border border-white/10 bg-slate-800/50 backdrop-blur-md
-                transition-all duration-500 ease-out-quint
-                group-hover:bg-teal-500/10 group-hover:border-teal-500/20 group-hover:text-teal-300
-                group-data-[active=true]:bg-teal-500/10 group-data-[active=true]:border-teal-500/20 group-data-[active=true]:text-teal-300
-            `}>
-              {/* Icon Wrapper (Morphs) */}
-              <div className="relative w-full h-full flex items-center justify-center">
-                <HelpCircle className={`
-                    w-5 h-5 text-slate-400 absolute transition-all duration-500
-                    scale-100 rotate-0 opacity-100
-                    group-hover:scale-50 group-hover:-rotate-180 group-hover:opacity-0
-                    group-data-[active=true]:scale-50 group-data-[active=true]:-rotate-180 group-data-[active=true]:opacity-0
-                 `} />
-                <Sparkles className={`
-                    w-5 h-5 absolute transition-all duration-500
-                    scale-50 rotate-180 opacity-0
-                    group-hover:scale-100 group-hover:rotate-0 group-hover:opacity-100
-                    group-data-[active=true]:scale-100 group-data-[active=true]:rotate-0 group-data-[active=true]:opacity-100
-                 `} />
-              </div>
-            </div>
-          </div>
 
           <div className="flex justify-between items-start mb-6">
             <div className={`
@@ -192,8 +165,10 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, index, isVisible, la
           `}
           style={{ opacity: isActive || isHovered ? 0 : 1 }}
         >
-          <div className="animate-bounce-slow text-slate-600">
-            <MousePointerClick className="w-6 h-6" />
+          <div className="relative">
+            {/* Subtle pulse ring */}
+            <div className="absolute inset-0 bg-slate-500/20 rounded-full animate-ping opacity-75" />
+            <Pointer className="w-6 h-6 text-slate-500 relative z-10 animate-pulse" />
           </div>
         </div>
       </div>

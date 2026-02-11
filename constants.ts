@@ -96,7 +96,7 @@ export const CONTENT = {
           CZ: ['⚡ Radikální snížení nákladů', '✅ Eliminace lidských chyb', '🚀 Škálovatelnost byznysu'],
           EN: ['⚡ Radical cost reduction', '✅ Elimination of human errors', '🚀 Business scalability']
         },
-        iconName: 'server'
+        iconName: 'ai'
       },
       {
         title: { CZ: 'Managed Cloud & Support', EN: 'Managed Cloud & Support' },
@@ -108,7 +108,7 @@ export const CONTENT = {
           CZ: ['🛡️ Nulové výpadky příjmů', '🔒 Maximální bezpečnost dat', '🧘 Absolutní klid pro podnikání'],
           EN: ['🛡️ Zero revenue downtime', '🔒 Maximum data security', '🧘 Total peace of mind']
         },
-        iconName: 'design'
+        iconName: 'server'
       }
     ] as ServiceData[]
   },

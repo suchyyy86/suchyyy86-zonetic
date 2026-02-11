@@ -240,7 +240,8 @@ const Benefits: React.FC<BenefitsProps> = ({ lang }) => {
               >
                 {/* The Laser Head Tip */}
                 <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[4px] h-[30px] bg-white blur-[4px] rounded-full translate-y-1/2" />
-                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-6 h-6 bg-teal-300 blur-xl rounded-full translate-y-1/2" />
+                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-8 h-8 bg-teal-300 blur-md rounded-full translate-y-1/2" />
+                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-16 h-16 bg-teal-400/30 blur-xl rounded-full translate-y-1/2" />
               </div>
             </div>
 
@@ -294,26 +295,45 @@ const Benefits: React.FC<BenefitsProps> = ({ lang }) => {
                       </div>
                     </div>
 
-                    {/* --- CONTENT CARD --- */}
-                    <div className="benefit-card will-change-transform origin-left">
-                      <div className="
-                        p-6 md:p-8 rounded-3xl border transition-colors duration-500 relative overflow-hidden
-                        bg-slate-950 border-slate-800/50 
-                        group-data-[state=active]:bg-slate-900/60 group-data-[state=active]:border-teal-500/30 group-data-[state=active]:shadow-[0_10px_40px_-10px_rgba(0,0,0,0.5)]
-                      ">
-                        {/* Active Card Glow Gradient */}
-                        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-teal-500 to-transparent opacity-0 transition-opacity duration-500 group-data-[state=active]:opacity-50" />
+                    {/* --- CONNECTOR LINE --- */}
+                    <div className="active-connector absolute top-[20px] left-[48px] md:left-[72px] h-[2px] bg-gradient-to-r from-teal-500/0 via-teal-500 to-teal-500/0 
+                                    w-0 group-data-[state=active]:w-[24px] md:group-data-[state=active]:w-[48px] transition-all duration-500 ease-out opacity-0 group-data-[state=active]:opacity-100" />
 
-                        <div className="flex flex-col sm:flex-row items-start gap-4 md:gap-6 relative z-10">
-                          <div className="
-                               flex-shrink-0 w-12 h-12 md:w-14 md:h-14 rounded-2xl flex items-center justify-center transition-all duration-500
-                               bg-slate-800 text-slate-500
-                               group-data-[state=active]:bg-gradient-to-br group-data-[state=active]:from-teal-500 group-data-[state=active]:to-teal-700 group-data-[state=active]:text-white group-data-[state=active]:shadow-lg
-                             ">
-                            {icons[index]}
+                    {/* --- CONTENT CARD --- */}
+                    <div className="benefit-card will-change-transform origin-left relative">
+
+                      {/* Watermark Number */}
+                      <div className="absolute -top-12 -right-4 text-[120px] font-bold text-slate-800/10 pointer-events-none select-none z-0
+                                      transition-all duration-700 ease-out translate-y-8 opacity-0 group-data-[state=active]:translate-y-0 group-data-[state=active]:opacity-100">
+                        0{index + 1}
+                      </div>
+
+                      <div className="
+                        p-6 md:p-8 rounded-3xl border transition-all duration-500 relative overflow-hidden z-10
+                        bg-slate-900/40 backdrop-blur-sm border-slate-800/50 
+                        group-data-[state=active]:bg-slate-900/80 group-data-[state=active]:border-teal-500/30 group-data-[state=active]:shadow-[0_20px_60px_-10px_rgba(20,184,166,0.1)]
+                        hover:border-teal-500/20
+                      ">
+                        {/* Active Card Glow Gradient (Spotlight) */}
+                        <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-teal-500/10 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2 pointer-events-none opacity-0 transition-opacity duration-500 group-data-[state=active]:opacity-100" />
+                        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-teal-500 to-transparent opacity-0 transition-opacity duration-500 group-data-[state=active]:opacity-100" />
+
+                        <div className="flex flex-col sm:flex-row items-start gap-4 md:gap-8 relative z-10">
+                          {/* Icon Container with Glow */}
+                          <div className="relative">
+                            <div className="absolute inset-0 bg-teal-500/20 blur-xl rounded-full opacity-0 group-data-[state=active]:opacity-100 transition-opacity duration-500" />
+                            <div className="
+                                 relative flex-shrink-0 w-14 h-14 md:w-16 md:h-16 rounded-2xl flex items-center justify-center transition-all duration-500
+                                 bg-slate-800/80 border border-slate-700 text-slate-500
+                                 group-data-[state=active]:bg-gradient-to-br group-data-[state=active]:from-teal-500 group-data-[state=active]:to-teal-600 group-data-[state=active]:border-teal-400 group-data-[state=active]:text-white group-data-[state=active]:shadow-lg group-data-[state=active]:shadow-teal-500/20
+                               ">
+                              {/* Clone icon with larger size */}
+                              {React.cloneElement(icons[index] as React.ReactElement, { className: "w-7 h-7 md:w-8 md:h-8" })}
+                            </div>
                           </div>
-                          <div>
-                            <h3 className="text-xl md:text-2xl font-bold mb-2 md:mb-3 transition-colors duration-300 text-slate-400 group-data-[state=active]:text-white">
+
+                          <div className="pt-2">
+                            <h3 className="text-xl md:text-3xl font-bold mb-3 md:mb-4 transition-colors duration-300 text-slate-300 group-data-[state=active]:text-white">
                               {item.title[lang]}
                             </h3>
                             <p className="text-slate-400 leading-relaxed text-base md:text-lg">

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Language, ServiceData } from '../types';
 import { CONTENT } from '../constants';
-import { Code, Share2, Server, PenTool, Sparkles, HelpCircle } from 'lucide-react';
+import { Code, Share2, Server, PenTool, Sparkles, HelpCircle, MousePointerClick } from 'lucide-react';
 
 interface ServicesProps {
   lang: Language;
@@ -19,10 +19,13 @@ interface ServiceCardProps {
   index: number;
   isVisible: boolean;
   lang: Language;
+  isActive: boolean;
+  onClick: () => void;
 }
 
-const ServiceCard: React.FC<ServiceCardProps> = ({ service, index, isVisible, lang }) => {
+const ServiceCard: React.FC<ServiceCardProps> = ({ service, index, isVisible, lang, isActive, onClick }) => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [isHovered, setIsHovered] = useState(false);
   const divRef = useRef<HTMLDivElement>(null);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -44,10 +47,15 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, index, isVisible, la
     <div
       ref={divRef}
       onMouseMove={handleMouseMove}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      onClick={onClick}
+      data-active={isActive}
       className={`
         group relative h-[420px] rounded-3xl bg-slate-900/40 border border-white/5 overflow-hidden
-        transition-all duration-700 ease-out-quint cursor-default
+        transition-all duration-700 ease-out-quint cursor-pointer
         hover:scale-[1.02] hover:shadow-2xl hover:shadow-teal-900/20 hover:border-teal-500/30
+        data-[active=true]:scale-[1.02] data-[active=true]:shadow-2xl data-[active=true]:shadow-teal-900/20 data-[active=true]:border-teal-500/30
       `}
       style={{
         transitionDelay: `${index * 150 + 200}ms`, // Slower start (200ms) + bigger gap between cards
@@ -61,13 +69,13 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, index, isVisible, la
       }}
     >
       {/* --- Idle State: Subtle Breathing Background --- */}
-      <div className="absolute inset-0 opacity-20 group-hover:opacity-0 transition-opacity duration-700">
+      <div className="absolute inset-0 opacity-20 group-hover:opacity-0 group-data-[active=true]:opacity-0 transition-opacity duration-700">
         <div className="absolute inset-0 bg-gradient-to-tr from-teal-500/5 via-transparent to-purple-500/5 animate-pulse-slow" />
       </div>
 
       {/* --- Hover State: Dynamic Spotlight --- */}
       <div
-        className="pointer-events-none absolute -inset-px opacity-0 transition duration-500 group-hover:opacity-100"
+        className="pointer-events-none absolute -inset-px opacity-0 transition duration-500 group-hover:opacity-100 group-data-[active=true]:opacity-100"
         style={{
           background: `radial-gradient(600px circle at ${position.x}px ${position.y}px, rgba(20, 184, 166, 0.15), transparent 40%)`
         }}
@@ -85,6 +93,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, index, isVisible, la
                 w-10 h-10 rounded-full border border-white/10 bg-slate-800/50 backdrop-blur-md
                 transition-all duration-500 ease-out-quint
                 group-hover:bg-teal-500/10 group-hover:border-teal-500/20 group-hover:text-teal-300
+                group-data-[active=true]:bg-teal-500/10 group-data-[active=true]:border-teal-500/20 group-data-[active=true]:text-teal-300
             `}>
               {/* Icon Wrapper (Morphs) */}
               <div className="relative w-full h-full flex items-center justify-center">
@@ -92,11 +101,13 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, index, isVisible, la
                     w-5 h-5 text-slate-400 absolute transition-all duration-500
                     scale-100 rotate-0 opacity-100
                     group-hover:scale-50 group-hover:-rotate-180 group-hover:opacity-0
+                    group-data-[active=true]:scale-50 group-data-[active=true]:-rotate-180 group-data-[active=true]:opacity-0
                  `} />
                 <Sparkles className={`
                     w-5 h-5 absolute transition-all duration-500
                     scale-50 rotate-180 opacity-0
                     group-hover:scale-100 group-hover:rotate-0 group-hover:opacity-100
+                    group-data-[active=true]:scale-100 group-data-[active=true]:rotate-0 group-data-[active=true]:opacity-100
                  `} />
               </div>
             </div>
@@ -107,6 +118,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, index, isVisible, la
               p-3.5 rounded-2xl bg-slate-800/50 border border-slate-700/50 text-slate-400
               transition-all duration-500 ease-out-quint
               group-hover:bg-teal-500 group-hover:border-teal-400 group-hover:text-slate-950 group-hover:scale-110 group-hover:rotate-3 group-hover:shadow-lg group-hover:shadow-teal-500/20
+              group-data-[active=true]:bg-teal-500 group-data-[active=true]:border-teal-400 group-data-[active=true]:text-slate-950 group-data-[active=true]:scale-110 group-data-[active=true]:rotate-3 group-data-[active=true]:shadow-lg group-data-[active=true]:shadow-teal-500/20
             `}>
               {iconMap[service.iconName]}
             </div>
@@ -117,6 +129,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, index, isVisible, la
             <h3 className={`
                 text-2xl font-bold text-white mb-2 transition-all duration-300
                 group-hover:opacity-0 group-hover:-translate-y-4 group-hover:pointer-events-none
+                group-data-[active=true]:opacity-0 group-data-[active=true]:-translate-y-4 group-data-[active=true]:pointer-events-none
               `}>
               {service.title[lang]}
             </h3>
@@ -131,8 +144,9 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, index, isVisible, la
             text-slate-400 text-lg leading-loose
             absolute inset-0
             transition-all duration-500 ease-out-quint
-            delay-300 group-hover:delay-0
+            delay-300 group-hover:delay-0 group-data-[active=true]:delay-0
             group-hover:opacity-0 group-hover:-translate-y-4
+            group-data-[active=true]:opacity-0 group-data-[active=true]:-translate-y-4
           `}>
             {renderDescription(service.description[lang])}
           </p>
@@ -141,8 +155,10 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, index, isVisible, la
           <div className={`
             absolute inset-0 flex flex-col justify-center
             transition-all duration-500 ease-out-quint 
-            delay-0 group-hover:delay-300
-            opacity-0 translate-y-8 group-hover:opacity-100 group-hover:translate-y-0
+            delay-0 group-hover:delay-300 group-data-[active=true]:delay-300
+            opacity-0 translate-y-8 
+            group-hover:opacity-100 group-hover:translate-y-0
+            group-data-[active=true]:opacity-100 group-data-[active=true]:translate-y-0
           `}>
 
             {/* New Heading */}
@@ -167,6 +183,19 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, index, isVisible, la
 
           </div>
         </div>
+
+        <div
+          className={`
+            absolute bottom-6 left-1/2 -translate-x-1/2
+            transition-all duration-500
+            ${isActive || isHovered ? 'scale-50' : 'scale-100'}
+          `}
+          style={{ opacity: isActive || isHovered ? 0 : 1 }}
+        >
+          <div className="animate-bounce-slow text-slate-600">
+            <MousePointerClick className="w-6 h-6" />
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -174,6 +203,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, index, isVisible, la
 
 const Services: React.FC<ServicesProps> = ({ lang }) => {
   const [isVisible, setIsVisible] = useState(false);
+  const [activeCardIndex, setActiveCardIndex] = useState<number | null>(null);
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -192,6 +222,10 @@ const Services: React.FC<ServicesProps> = ({ lang }) => {
     }
     return () => observer.disconnect();
   }, []);
+
+  const handleCardClick = (index: number) => {
+    setActiveCardIndex(activeCardIndex === index ? null : index);
+  };
 
   return (
     <section ref={sectionRef} id="services" className="py-32 bg-slate-950 relative overflow-hidden">
@@ -217,7 +251,7 @@ const Services: React.FC<ServicesProps> = ({ lang }) => {
         </div>
 
         {/* Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
           {CONTENT.services.items.map((service, index) => (
             <ServiceCard
               key={index}
@@ -225,6 +259,8 @@ const Services: React.FC<ServicesProps> = ({ lang }) => {
               index={index}
               isVisible={isVisible}
               lang={lang}
+              isActive={activeCardIndex === index}
+              onClick={() => handleCardClick(index)}
             />
           ))}
         </div>

@@ -166,12 +166,11 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
 
           {/* CTA Group - STATIC (Outside contentRef but inside wrapperRef) */}
           <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-            <Button onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })} className="group relative overflow-hidden">
-              <span className="relative z-10 flex items-center">
+            <Button onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })} className="group">
+              <span className="flex items-center">
                 {CONTENT.hero.cta[lang]}
                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </span>
-              <div className="absolute inset-0 bg-gradient-to-r from-teal-400 to-teal-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </Button>
             <Button variant="outline" onClick={() => {
               window.scrollTo({ top: window.innerHeight, behavior: 'smooth' });

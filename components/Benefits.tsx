@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Language } from '../types';
 import { CONTENT } from '../constants';
 import Button from './Button';
-import ScrollArrow from './ScrollArrow';
+
 import { Zap, TrendingUp, Smartphone, ArrowRight } from 'lucide-react';
 
 interface BenefitsProps {
@@ -195,10 +195,13 @@ const Benefits: React.FC<BenefitsProps> = ({ lang }) => {
           {/* Left Column - Sticky Header */}
           <div className="lg:sticky lg:top-40 lg:h-fit self-start mb-12 lg:mb-0 z-10">
             <div className="relative">
-              <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white mb-6 leading-tight tracking-tight">
+              <div className="absolute -inset-4 bg-teal-500/10 blur-3xl opacity-20 rounded-full" />
+
+              <h2 className="relative text-4xl sm:text-5xl md:text-6xl font-black text-white mb-8 leading-tight tracking-tight drop-shadow-lg">
                 {CONTENT.benefits.headline[lang]}
               </h2>
-              <p className="text-lg text-slate-400 max-w-md leading-relaxed mb-8 border-l-2 border-slate-800 pl-6">
+
+              <p className="relative text-lg md:text-xl text-slate-300 max-w-lg leading-relaxed mb-10 border-l-4 border-teal-500 pl-6 py-1">
                 {lang === 'CZ'
                   ? 'Digitální svět se mění každým dnem. My zajistíme, aby váš byznys nejen stíhal tempo, ale udával směr. Technologie v našich rukou nejsou jen nástrojem, ale vaší konkurenční výhodou.'
                   : 'The digital world changes every day. We ensure your business not only keeps up but leads the way. In our hands, technology is not just a tool, but your competitive advantage.'}
@@ -207,18 +210,18 @@ const Benefits: React.FC<BenefitsProps> = ({ lang }) => {
               <div className="pl-1">
                 <Button
                   onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                  variant="outline"
-                  className="group border-slate-700 hover:border-teal-500"
+                  variant="primary"
+                  className="group px-8 py-4 text-lg"
                 >
-                  <span className="flex items-center gap-2">
+                  <span className="flex items-center gap-3">
                     {lang === 'CZ' ? 'Projednat projekt' : 'Discuss Project'}
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </span>
                 </Button>
               </div>
             </div>
 
-            <ScrollArrow />
+
           </div>
 
           {/* Right Column - Premium Timeline Experience */}

@@ -140,6 +140,10 @@ export const CONTENT = {
   },
   techStack: {
     headline: { CZ: 'Náš Tech Stack', EN: 'Our Tech Stack' },
+    subheadline: {
+      CZ: 'Digitální ekosystém postavený na technologiích, které pohánějí světové lídry. Odolný, rychlý a připravený na budoucnost.',
+      EN: 'A digital ecosystem built on technologies powering global leaders. Resilient, fast, and ready for the future.'
+    },
     technologies: ['React', 'Next.js', 'TypeScript', 'Node.js', 'AWS', 'Tailwind', 'Figma', 'Meta Business Suite', 'PostgreSQL', 'Docker']
   },
   contact: {

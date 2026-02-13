@@ -287,23 +287,26 @@ const Technologies: React.FC<TechStackProps> = ({ lang }) => {
 
         {/* Header */}
         <div className="text-center mb-10 md:mb-16 relative z-20">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="inline-block mb-4 px-4 py-1 rounded-full bg-teal-500/10 border border-teal-500/20 text-teal-300 text-sm font-medium tracking-wider"
-          >
-            TECHNOLOGY
-          </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-4xl sm:text-5xl font-bold text-white mb-6 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-200 to-slate-400"
+            className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white mb-6 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-200 to-slate-400"
           >
             {CONTENT.techStack.headline[lang]}
           </motion.h2>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed mb-8"
+          >
+            {CONTENT.techStack.subheadline[lang]}
+          </motion.p>
+
           <motion.div
             initial={{ width: 0 }}
             whileInView={{ width: 80 }}

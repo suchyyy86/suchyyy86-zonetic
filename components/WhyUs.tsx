@@ -197,11 +197,12 @@ const WhyUs: React.FC<BenefitsProps> = ({ lang }) => {
             <div className="relative">
               <div className="absolute -inset-4 bg-teal-500/10 blur-3xl opacity-20 rounded-full" />
 
-              <h2 className="relative text-4xl sm:text-5xl md:text-6xl font-black text-white mb-8 leading-tight tracking-tight drop-shadow-lg">
+              <h2 className="relative text-4xl sm:text-5xl md:text-6xl font-extrabold text-white mb-8 leading-tight tracking-tight drop-shadow-lg">
                 {CONTENT.benefits.headline[lang]}
               </h2>
 
-              <p className="relative text-lg md:text-xl text-slate-300 max-w-lg leading-relaxed mb-10 border-l-4 border-teal-500 pl-6 py-1">
+              <p className="relative text-lg md:text-xl text-slate-400 max-w-lg leading-relaxed mb-10 pl-6 py-1">
+                <span className="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-transparent via-teal-500 to-transparent rounded-full" />
                 {lang === 'CZ'
                   ? 'Digitální svět se mění každým dnem. My zajistíme, aby váš byznys nejen stíhal tempo, ale udával směr. Technologie v našich rukou nejsou jen nástrojem, ale vaší konkurenční výhodou.'
                   : 'The digital world changes every day. We ensure your business not only keeps up but leads the way. In our hands, technology is not just a tool, but your competitive advantage.'}

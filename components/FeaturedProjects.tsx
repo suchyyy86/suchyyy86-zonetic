@@ -58,7 +58,7 @@ const ProjectCard: React.FC<{ project: ProjectData; index: number; isVisible: bo
 
         <div className="mb-8">
           <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-teal-200 transition-colors duration-300">{project.title[lang]}</h3>
-          <p className="text-slate-400 leading-relaxed group-hover:text-slate-300 transition-colors duration-300">
+          <p className="text-lg text-slate-400 leading-relaxed group-hover:text-slate-300 transition-colors duration-300">
             {project.description[lang]}
           </p>
         </div>

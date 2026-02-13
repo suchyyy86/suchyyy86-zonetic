@@ -195,7 +195,7 @@ const Contact: React.FC<ContactProps> = ({ lang }) => {
             className={`lg:col-span-5 flex flex-col justify-center transition-all duration-1000 ease-out-expo ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-12'
               }`}
           >
-            <h2 className="text-4xl sm:text-6xl font-extrabold text-white mb-8 leading-tight tracking-tight">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white mb-8 leading-tight tracking-tight">
               {lang === 'CZ' ? (
                 <>
                   Začněme tvořit <br />
@@ -345,8 +345,8 @@ const Contact: React.FC<ContactProps> = ({ lang }) => {
                       type="submit"
                       disabled={!isFormValid}
                       className={`h-14 text-lg transition-all duration-300 ${isFormValid
-                          ? 'bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-400 hover:to-teal-500 shadow-[0_0_25px_rgba(20,184,166,0.3)] hover:shadow-[0_0_40px_rgba(20,184,166,0.5)] transform hover:-translate-y-1'
-                          : 'bg-slate-700 cursor-not-allowed opacity-60'
+                        ? 'bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-400 hover:to-teal-500 shadow-[0_0_25px_rgba(20,184,166,0.3)] hover:shadow-[0_0_40px_rgba(20,184,166,0.5)] transform hover:-translate-y-1'
+                        : 'bg-slate-700 cursor-not-allowed opacity-60'
                         }`}
                     >
                       {CONTENT.contact.form.submit[lang]}

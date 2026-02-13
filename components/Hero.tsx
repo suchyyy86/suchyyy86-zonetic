@@ -173,7 +173,7 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
               </span>
             </Button>
             <Button variant="outline" onClick={() => {
-              window.scrollTo({ top: window.innerHeight, behavior: 'smooth' });
+              document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
             }} className="backdrop-blur-sm bg-slate-950/30 border-teal-500/50 hover:bg-teal-500/10">
               {CONTENT.hero.ctaSecondary[lang]}
             </Button>

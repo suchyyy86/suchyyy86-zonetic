@@ -76,7 +76,7 @@ const Header: React.FC<HeaderProps> = ({ lang, setLang, onNavigate }) => {
 
   return (
     <>
-      <header className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${isScrolled || isMobileMenuOpen ? 'glass-panel py-3 shadow-lg' : 'bg-transparent py-6'}`}>
+      <header className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${isScrolled || isMobileMenuOpen ? 'bg-slate-950/80 backdrop-blur-md border-b border-white/5 py-4' : 'bg-transparent py-6'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center">
             {/* Logo */}
@@ -84,7 +84,7 @@ const Header: React.FC<HeaderProps> = ({ lang, setLang, onNavigate }) => {
               <img
                 src="./images/zonetic_logo.png"
                 alt="Zonetic Logo"
-                className="h-10 w-auto"
+                className="h-10 w-auto" // Slightly larger logo for impact
               />
             </div>
 
@@ -95,24 +95,26 @@ const Header: React.FC<HeaderProps> = ({ lang, setLang, onNavigate }) => {
                   key={index}
                   href={item.href}
                   onClick={(e) => handleNavClick(e, item.href)}
-                  className="text-sm font-medium text-slate-300 hover:text-teal-400 transition-colors uppercase tracking-wider relative group"
+                  className="text-sm font-bold text-slate-300 hover:text-white transition-all duration-300 uppercase tracking-widest relative group"
                 >
-                  {item.label[lang]}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-teal-400 transition-all duration-300 group-hover:w-full"></span>
+                  <span className="relative z-10">{item.label[lang]}</span>
+                  {/* Hover Glow Effect */}
+                  <span className="absolute inset-x-0 -bottom-1 h-0.5 bg-gradient-to-r from-teal-400 to-teal-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+                  <span className="absolute -inset-2 bg-white/5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-0 blur-sm"></span>
                 </a>
               ))}
             </nav>
 
             {/* Actions */}
-            <div className="hidden md:flex items-center gap-4">
+            <div className="hidden md:flex items-center gap-6">
               <button
                 onClick={toggleLang}
-                className="flex items-center gap-1 text-slate-400 hover:text-white transition-colors text-sm font-medium"
+                className="flex items-center gap-1.5 text-slate-400 hover:text-white transition-colors text-xs font-bold uppercase tracking-wider"
               >
-                <Globe size={16} />
+                <Globe size={14} className="text-teal-500" />
                 <span>{lang}</span>
               </button>
-              <Button onClick={() => onNavigate('#contact')}>
+              <Button onClick={() => onNavigate('#contact')} className="shadow-[0_0_15px_rgba(20,184,166,0.3)] hover:shadow-[0_0_25px_rgba(20,184,166,0.5)]">
                 {CONTENT.header.cta[lang]}
               </Button>
             </div>
@@ -125,16 +127,16 @@ const Header: React.FC<HeaderProps> = ({ lang, setLang, onNavigate }) => {
             >
               <div className="relative w-6 h-6 flex items-center justify-center">
                 <motion.span
-                  animate={isMobileMenuOpen ? { rotate: 45, y: 0 } : { rotate: 0, y: -8 }}
-                  className="absolute w-full h-0.5 bg-current transform transition-transform origin-center"
+                  animate={isMobileMenuOpen ? { rotate: 45, y: 3 } : { rotate: 0, y: -6 }}
+                  className="absolute w-full h-0.5 bg-current transform transition-transform origin-center rounded-full"
                 />
                 <motion.span
                   animate={isMobileMenuOpen ? { opacity: 0 } : { opacity: 1 }}
-                  className="absolute w-full h-0.5 bg-current"
+                  className="absolute w-full h-0.5 bg-current rounded-full"
                 />
                 <motion.span
-                  animate={isMobileMenuOpen ? { rotate: -45, y: 0 } : { rotate: 0, y: 8 }}
-                  className="absolute w-full h-0.5 bg-current transform transition-transform origin-center"
+                  animate={isMobileMenuOpen ? { rotate: -45, y: -3 } : { rotate: 0, y: 6 }}
+                  className="absolute w-full h-0.5 bg-current transform transition-transform origin-center rounded-full"
                 />
               </div>
             </button>
@@ -151,10 +153,10 @@ const Header: React.FC<HeaderProps> = ({ lang, setLang, onNavigate }) => {
               animate="open"
               exit="closed"
               variants={menuVariants}
-              className="fixed inset-0 bg-slate-950 z-[99] flex flex-col pt-24 px-6 md:hidden"
+              className="fixed inset-0 bg-slate-950/95 backdrop-blur-xl z-[99] flex flex-col pt-28 px-8 md:hidden shadow-2xl"
               style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0 }}
             >
-              <div className="flex flex-col h-full justify-between pb-10">
+              <div className="flex flex-col h-full justify-between pb-12">
                 <nav className="flex flex-col gap-6">
                   {CONTENT.header.menu.map((item, index) => (
                     <motion.a
@@ -162,22 +164,22 @@ const Header: React.FC<HeaderProps> = ({ lang, setLang, onNavigate }) => {
                       href={item.href}
                       variants={itemVariants}
                       onClick={(e) => handleNavClick(e, item.href)}
-                      className="text-3xl font-bold text-white hover:text-teal-400 flex items-center justify-between group py-2 border-b border-slate-800/50"
+                      className="text-4xl font-black text-white hover:text-teal-400 flex items-center justify-between group py-3 border-b border-white/5 tracking-tight"
                     >
                       {item.label[lang]}
-                      <ArrowRight className="w-6 h-6 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-teal-400" />
+                      <ArrowRight className="w-8 h-8 opacity-0 -translate-x-8 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-teal-400" />
                     </motion.a>
                   ))}
                 </nav>
 
-                <motion.div variants={itemVariants} className="flex flex-col gap-6 mt-8">
-                  <div className="flex items-center justify-between py-4 border-t border-slate-800">
-                    <span className="text-slate-400 text-sm uppercase tracking-wider">Language</span>
+                <motion.div variants={itemVariants} className="flex flex-col gap-8 mt-auto">
+                  <div className="flex items-center justify-between py-6 border-t border-white/10">
+                    <span className="text-slate-400 text-sm font-bold uppercase tracking-widest">Language</span>
                     <button
                       onClick={toggleLang}
-                      className="flex items-center gap-2 text-white font-medium hover:text-teal-400 transition-colors bg-slate-900/50 px-4 py-2 rounded-full border border-slate-800"
+                      className="flex items-center gap-3 text-white font-bold hover:text-teal-400 transition-colors bg-white/5 px-5 py-2.5 rounded-full border border-white/10"
                     >
-                      <Globe size={18} />
+                      <Globe size={18} className="text-teal-500" />
                       <span>{lang === 'CZ' ? 'Čeština' : 'English'}</span>
                     </button>
                   </div>
@@ -185,7 +187,7 @@ const Header: React.FC<HeaderProps> = ({ lang, setLang, onNavigate }) => {
                   <Button fullWidth onClick={() => {
                     onNavigate('#contact');
                     setIsMobileMenuOpen(false);
-                  }} className="h-14 text-lg">
+                  }} className="h-16 text-xl font-bold shadow-lg shadow-teal-900/40">
                     {CONTENT.header.cta[lang]}
                   </Button>
                 </motion.div>

@@ -5,8 +5,8 @@ export const CONTENT = {
     cta: { CZ: 'Nezávazná konzultace', EN: 'Free Consultation' },
     menu: [
       { label: { CZ: 'Služby', EN: 'Services' }, href: '#services' },
-      { label: { CZ: 'Projekty', EN: 'Projects' }, href: '#projects' },
-      { label: { CZ: 'O nás', EN: 'About' }, href: '#why-us' },
+      { label: { CZ: 'Zonetic Lab', EN: 'Zonetic Lab' }, href: '#projects' },
+      { label: { CZ: 'Proč my', EN: 'Why Us' }, href: '#why-us' },
       { label: { CZ: 'Kontakt', EN: 'Contact' }, href: '#contact' },
     ] as NavLink[]
   },

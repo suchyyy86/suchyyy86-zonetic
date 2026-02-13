@@ -424,8 +424,8 @@ const TechStack: React.FC<TechStackProps> = ({ lang }) => {
                   >
                     <div
                       className="relative group flex flex-col items-center justify-center cursor-pointer"
-                      onMouseEnter={() => handleNodeInteraction(node.id)}
-                      onMouseLeave={handleNodeLeave}
+                      onMouseEnter={() => !isMobile && handleNodeInteraction(node.id)}
+                      onMouseLeave={() => !isMobile && handleNodeLeave()}
                       onClick={(e) => {
                         e.stopPropagation();
                         if (isMobile) handleNodeInteraction(node.id);

@@ -238,13 +238,13 @@ const Benefits: React.FC<BenefitsProps> = ({ lang }) => {
               {/* 2. Active Beam (Glowing Teal) */}
               <div
                 ref={beamRef}
-                className="absolute top-0 w-full bg-gradient-to-b from-teal-500 via-teal-400 to-teal-500 rounded-full shadow-[0_0_20px_rgba(20,184,166,0.5)] will-change-[height]"
+                className="absolute top-0 w-full bg-gradient-to-b from-teal-500 via-teal-400 to-teal-500 rounded-full shadow-[0_0_10px_rgba(20,184,166,0.3)] md:shadow-[0_0_20px_rgba(20,184,166,0.5)] will-change-[height]"
                 style={{ height: '0px' }}
               >
                 {/* The Laser Head Tip */}
-                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[4px] h-[30px] bg-white blur-[4px] rounded-full translate-y-1/2" />
-                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-8 h-8 bg-teal-300 blur-md rounded-full translate-y-1/2" />
-                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-16 h-16 bg-teal-400/30 blur-xl rounded-full translate-y-1/2" />
+                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[2px] h-[15px] md:w-[4px] md:h-[30px] bg-white blur-[2px] md:blur-[4px] rounded-full translate-y-1/2" />
+                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-4 md:w-8 md:h-8 bg-teal-300 blur-sm md:blur-md rounded-full translate-y-1/2" />
+                <div className="hidden md:block absolute bottom-0 left-1/2 -translate-x-1/2 w-16 h-16 bg-teal-400/30 blur-xl rounded-full translate-y-1/2" />
               </div>
             </div>
 

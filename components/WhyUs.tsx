@@ -9,7 +9,7 @@ interface BenefitsProps {
   lang: Language;
 }
 
-const Benefits: React.FC<BenefitsProps> = ({ lang }) => {
+const WhyUs: React.FC<BenefitsProps> = ({ lang }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const beamRef = useRef<HTMLDivElement>(null);
@@ -366,4 +366,4 @@ const Benefits: React.FC<BenefitsProps> = ({ lang }) => {
   );
 };
 
-export default Benefits;
+export default WhyUs;

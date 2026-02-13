@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 
-const ScrollArrow: React.FC = () => {
+const ScrollIndicator: React.FC = () => {
     const containerRef = useRef<HTMLDivElement>(null);
     const arrowPathRef = useRef<SVGPathElement>(null);
     const glowPathRef = useRef<SVGPathElement>(null);
@@ -106,4 +106,4 @@ const ScrollArrow: React.FC = () => {
     );
 };
 
-export default ScrollArrow;
+export default ScrollIndicator;

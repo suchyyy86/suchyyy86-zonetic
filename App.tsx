@@ -3,13 +3,13 @@ import { Language } from './types';
 import { CONTENT } from './constants';
 import Header from './components/Header';
 import Hero from './components/Hero';
-import Showcase from './components/Showcase';
+import FeaturedProjects from './components/FeaturedProjects';
 import Services from './components/Services';
-import Benefits from './components/Benefits';
-import TechStack from './components/TechStack';
+import WhyUs from './components/WhyUs';
+import Technologies from './components/Technologies';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import ProjectDetail from './components/ProjectDetail';
+import CaseStudy from './components/CaseStudy';
 
 type ViewState = 'landing' | 'project';
 
@@ -93,9 +93,9 @@ function App() {
           */}
           <div className="relative z-10 bg-slate-900 mt-[100vh] shadow-[0_-20px_50px_rgba(0,0,0,0.8)] border-t border-slate-900/50">
             <Services lang={lang} />
-            <Showcase lang={lang} onNavigate={handleNavigateProject} />
-            <Benefits lang={lang} />
-            <TechStack lang={lang} />
+            <FeaturedProjects lang={lang} onNavigate={handleNavigateProject} />
+            <WhyUs lang={lang} />
+            <Technologies lang={lang} />
             <Contact lang={lang} />
             <Footer lang={lang} />
           </div>
@@ -103,7 +103,7 @@ function App() {
       ) : (
         // Detailed Project View
         <div className="relative z-10 bg-slate-950">
-          <ProjectDetail
+          <CaseStudy
             project={activeProject}
             lang={lang}
             onBack={handleBack}

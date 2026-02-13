@@ -8,10 +8,10 @@ interface ShowcaseProps {
   onNavigate: (projectId: string) => void;
 }
 
-const Showcase: React.FC<ShowcaseProps> = ({ lang, onNavigate }) => {
+const FeaturedProjects: React.FC<ShowcaseProps> = ({ lang, onNavigate }) => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
-  
+
   const icons = [<Utensils key="1" size={40} />, <Layout key="2" size={40} />, <Monitor key="3" size={40} />];
 
   useEffect(() => {
@@ -35,10 +35,9 @@ const Showcase: React.FC<ShowcaseProps> = ({ lang, onNavigate }) => {
   return (
     <section ref={sectionRef} id="projects" className="py-24 bg-slate-950 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div 
-          className={`mb-16 text-center transition-all duration-1000 ease-out-expo ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
-          }`}
+        <div
+          className={`mb-16 text-center transition-all duration-1000 ease-out-expo ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+            }`}
         >
           <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">{CONTENT.showcase.headline[lang]}</h2>
           <div className="h-1 w-20 bg-teal-500 mx-auto rounded-full mb-4"></div>
@@ -47,7 +46,7 @@ const Showcase: React.FC<ShowcaseProps> = ({ lang, onNavigate }) => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {CONTENT.showcase.projects.map((project, index) => (
-            <div 
+            <div
               key={index}
               onClick={() => onNavigate(project.id)}
               className={`block group relative p-1 rounded-2xl bg-gradient-to-b from-slate-800 to-slate-900 hover:from-teal-500 hover:to-teal-700 transition-all duration-1000 ease-out-expo cursor-pointer`}
@@ -58,7 +57,7 @@ const Showcase: React.FC<ShowcaseProps> = ({ lang, onNavigate }) => {
               }}
             >
               <div className="bg-slate-900 h-full rounded-xl p-8 flex flex-col transition-all duration-300 group-hover:bg-slate-850 relative overflow-hidden">
-                
+
                 {/* Arrow Icon Indication */}
                 <div className="absolute top-8 right-8 text-white opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0 transition-all duration-300">
                   <ArrowRight size={24} />
@@ -67,7 +66,7 @@ const Showcase: React.FC<ShowcaseProps> = ({ lang, onNavigate }) => {
                 <div className="w-16 h-16 rounded-lg bg-teal-500/10 flex items-center justify-center text-teal-400 mb-6 group-hover:scale-110 transition-transform duration-300 border border-teal-500/20">
                   {icons[index]}
                 </div>
-                
+
                 <h3 className="text-xl font-bold text-white mb-3 group-hover:text-teal-200 transition-colors">{project.title[lang]}</h3>
                 <p className="text-slate-400 mb-6 flex-grow leading-relaxed group-hover:text-slate-300 transition-colors">
                   {project.description[lang]}
@@ -89,4 +88,4 @@ const Showcase: React.FC<ShowcaseProps> = ({ lang, onNavigate }) => {
   );
 };
 
-export default Showcase;
+export default FeaturedProjects;

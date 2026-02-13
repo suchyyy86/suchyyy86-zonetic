@@ -90,7 +90,7 @@ interface Node {
   icon: React.ElementType;
 }
 
-const TechStack: React.FC<TechStackProps> = ({ lang }) => {
+const Technologies: React.FC<TechStackProps> = ({ lang }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [nodes, setNodes] = useState<Node[]>([]);
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
@@ -488,4 +488,4 @@ const TechStack: React.FC<TechStackProps> = ({ lang }) => {
   );
 };
 
-export default TechStack;
+export default Technologies;

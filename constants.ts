@@ -147,10 +147,10 @@ export const CONTENT = {
     technologies: ['React', 'Next.js', 'TypeScript', 'Node.js', 'AWS', 'Tailwind', 'Figma', 'Meta Business Suite', 'PostgreSQL', 'Docker']
   },
   contact: {
-    headline: { CZ: 'Začněme tvořit Vaši budoucnost', EN: "Let's Build Your Future" },
+    headline: { CZ: 'Máte vizi? My máme technologii.', EN: "Have a vision? We have the technology." },
     subheadline: {
-      CZ: 'Máte vizi? My máme technologii. Napište nám a společně posuneme Vaše podnikání o úroveň výš.',
-      EN: 'You have the vision? We have the technology. Contact us and together we will take your business to the next level.'
+      CZ: 'Napište nám. Společně ji proměníme v realitu.',
+      EN: 'Write to us. Together we will turn it into reality.'
     },
     form: {
       name: { CZ: 'Jméno', EN: 'Name' },
@@ -159,13 +159,20 @@ export const CONTENT = {
       phone: { CZ: 'Telefon', EN: 'Phone' },
       service: { CZ: 'Typ služby', EN: 'Service Type' },
       serviceOptions: [
-        { CZ: 'Webový vývoj', EN: 'Web Development' },
-        { CZ: 'Digitální design', EN: 'Digital Design' },
-        { CZ: 'Správa sociálních sítí', EN: 'Social Media Management' },
-        { CZ: 'Hosting a domény', EN: 'Hosting & Domains' }
+        { CZ: 'Weby & Aplikace', EN: 'Webs & Apps' },
+        { CZ: 'Digitální růst', EN: 'Digital Growth' },
+        { CZ: 'AI & Automatizace', EN: 'AI & Automation' },
+        { CZ: 'Cloud & Support', EN: 'Cloud & Support' }
       ],
       message: { CZ: 'Zpráva', EN: 'Message' },
-      submit: { CZ: 'Odeslat poptávku', EN: 'Submit Inquiry' }
+      submit: { CZ: 'Odeslat poptávku', EN: 'Submit Inquiry' },
+      placeholders: {
+        name: { CZ: 'Jan Novák', EN: 'John Doe' },
+        company: { CZ: 'Vaše firma s.r.o.', EN: 'Your Company Ltd.' },
+        email: { CZ: 'jan.novak@firma.cz', EN: 'john@company.com' },
+        phone: { CZ: '+420 777 123 456', EN: '+1 555 123 4567' },
+        message: { CZ: 'Popište nám svůj projekt...', EN: 'Tell us about your project...' }
+      }
     },
     info: {
       email: 'hello@zoneticgroup.com',

@@ -35,52 +35,71 @@ const ICON_MAP: Record<string, React.ElementType> = {
 };
 
 // Define network connections (who connects to whom)
+// Define network connections (who connects to whom)
 const CONNECTIONS = [
-  ['React', 'Next.js'],
-  ['React', 'TypeScript'],
-  ['React', 'Tailwind'],
-  ['Next.js', 'Node.js'],
-  ['Next.js', 'Tailwind'],
-  ['Next.js', 'TypeScript'], // New: TS is core to Next.js
-  ['Next.js', 'AWS'],        // New: Deployment target
-  ['TypeScript', 'Node.js'],
-  ['Node.js', 'PostgreSQL'],
-  ['Node.js', 'Docker'],
-  ['Node.js', 'AWS'],
-  ['PostgreSQL', 'Docker'],
-  ['AWS', 'Docker'],
-  ['Figma', 'React'],
-  ['Figma', 'Tailwind'],
-  ['Figma', 'Meta Business Suite'], // New: Design -> Marketing
-  ['Meta Business Suite', 'React']  // Integrations
+  // 1. Design Branch (Input)
+  ['Figma', 'Tailwind'],    // Design -> Style
+  ['Figma', 'React'],       // Design -> Component
+
+  // 2. Development Core (Logic)
+  ['TypeScript', 'React'],   // Type safety
+  ['TypeScript', 'Next.js'], // Type safety
+  ['TypeScript', 'Node.js'], // Type safety
+  ['Meta Business Suite', 'React'], // Origin/Integration
+  ['React', 'Next.js'],      // Library -> Framework
+  ['Next.js', 'Node.js'],    // Frontend -> Backend
+  ['Node.js', 'Next.js'],    // Backend -> Frontend (Bidirectional)
+
+  // 3. Data and Infrastructure Branch (Output)
+  ['Node.js', 'PostgreSQL'], // Backend -> Database
+  ['Node.js', 'Docker'],     // Backend -> Container
+  ['Docker', 'AWS']          // Container -> Cloud
 ];
 
-// Orchestrated positions for "Constellation" look
+// Orchestrated positions for "Constellation" look - Organized Flow
 const FIXED_POSITIONS: Record<string, { x: number, y: number }> = {
-  'React': { x: 0.5, y: 0.45 },
-  'Next.js': { x: 0.38, y: 0.35 },
-  'TypeScript': { x: 0.62, y: 0.355 }, // slightly offset
-  'Tailwind': { x: 0.5, y: 0.25 },
-  'Node.js': { x: 0.5, y: 0.65 },
-  'AWS': { x: 0.70, y: 0.70 },
-  'PostgreSQL': { x: 0.35, y: 0.75 },
-  'Docker': { x: 0.55, y: 0.82 },
-  'Figma': { x: 0.25, y: 0.44 }, // slightly offset
-  'Meta Business Suite': { x: 0.75, y: 0.46 } // slightly offset
+  // Input / Design (Left)
+  'Figma': { x: 0.15, y: 0.4 },
+  'Meta Business Suite': { x: 0.15, y: 0.7 },
+
+  // Frontend / Core (Center-Left)
+  'Tailwind': { x: 0.3, y: 0.25 },
+  'React': { x: 0.35, y: 0.55 },
+
+  // Guard / Bridge (Center)
+  'TypeScript': { x: 0.5, y: 0.15 },
+  'Next.js': { x: 0.55, y: 0.5 },
+
+  // One level deeper
+  'Node.js': { x: 0.7, y: 0.6 },
+
+  // Output / Infra (Right)
+  'PostgreSQL': { x: 0.65, y: 0.85 },
+  'Docker': { x: 0.85, y: 0.5 },
+  'AWS': { x: 0.9, y: 0.3 }
 };
 
-// Mobile positions - spread out for narrow portrait layout
+// Mobile positions - vertically distributed
 const MOBILE_POSITIONS: Record<string, { x: number, y: number }> = {
-  'React': { x: 0.5, y: 0.33 },
-  'Next.js': { x: 0.22, y: 0.22 },
-  'TypeScript': { x: 0.78, y: 0.22 },
-  'Tailwind': { x: 0.5, y: 0.11 },
-  'Node.js': { x: 0.5, y: 0.55 },
-  'AWS': { x: 0.80, y: 0.66 },
-  'PostgreSQL': { x: 0.20, y: 0.66 },
-  'Docker': { x: 0.5, y: 0.78 },
-  'Figma': { x: 0.13, y: 0.44 },
-  'Meta Business Suite': { x: 0.87, y: 0.45 } // slightly offset
+  // Top - Design
+  'Meta Business Suite': { x: 0.2, y: 0.1 },
+  'Figma': { x: 0.8, y: 0.1 },
+
+  // Upper Mid - Frontend
+  'Tailwind': { x: 0.85, y: 0.22 },
+  'React': { x: 0.5, y: 0.28 },
+  'TypeScript': { x: 0.85, y: 0.42 },
+
+  // Mid - Framework
+  'Next.js': { x: 0.25, y: 0.45 },
+
+  // Lower Mid - Backend
+  'Node.js': { x: 0.5, y: 0.62 },
+
+  // Bottom - Infra
+  'PostgreSQL': { x: 0.2, y: 0.78 },
+  'Docker': { x: 0.8, y: 0.78 },
+  'AWS': { x: 0.65, y: 0.92 }
 };
 
 interface Node {
@@ -370,7 +389,7 @@ const Technologies: React.FC<TechStackProps> = ({ lang }) => {
                       }}
                     />
                     {/* Data Packet Animation (on hover or ambient) */}
-                    {(isConnectedToHover || (!hoveredNode && i % 2 === 0)) && dimensions.width > 0 && (
+                    {(isConnectedToHover || !hoveredNode) && dimensions.width > 0 && (
                       <circle r="2" fill="#14b8a6" opacity={isConnectedToHover ? 0.9 : 0.4}>
                         <animateMotion
                           dur={`${2 + (i % 3)}s`}

@@ -79,3 +79,55 @@ body {
 .delay-300 {
   animation-delay: 300ms;
 }
+
+/* Floating star particle animation — replaces framer-motion particles */
+@keyframes float-star {
+  0% {
+    transform: translateY(0);
+    opacity: var(--star-opacity, 0.3);
+  }
+
+  100% {
+    transform: translateY(var(--star-drift, -80px));
+    opacity: 0;
+  }
+}
+
+.star-particle {
+  animation: float-star var(--star-duration, 15s) linear infinite;
+  will-change: transform, opacity;
+}
+
+/* Ambient orb drift animation — replaces framer-motion ambient orbs */
+@keyframes orb-drift-1 {
+
+  0%,
+  100% {
+    transform: translate(0, 0);
+    opacity: 0.3;
+  }
+
+  50% {
+    transform: translate(50px, 30px);
+    opacity: 0.5;
+  }
+}
+
+@keyframes orb-drift-2 {
+
+  0%,
+  100% {
+    transform: translate(0, 0);
+    opacity: 0.3;
+  }
+
+  50% {
+    transform: translate(-50px, -30px);
+    opacity: 0.5;
+  }
+}
+
+/* Paint containment for heavy sections */
+.contain-content {
+  contain: content;
+}

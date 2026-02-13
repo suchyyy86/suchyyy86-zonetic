@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, Suspense, lazy } from 'react';
 import { Language } from './types';
 import Header from './components/Header';
 import Hero from './components/Hero';
-import FeaturedProjects from './components/FeaturedProjects';
-import Services from './components/Services';
-import WhyUs from './components/WhyUs';
-import Technologies from './components/Technologies';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
+
+// Lazy-load below-fold components for faster initial paint
+const Services = lazy(() => import('./components/Services'));
+const FeaturedProjects = lazy(() => import('./components/FeaturedProjects'));
+const WhyUs = lazy(() => import('./components/WhyUs'));
+const Technologies = lazy(() => import('./components/Technologies'));
+const Contact = lazy(() => import('./components/Contact'));
+const Footer = lazy(() => import('./components/Footer'));
 
 function App() {
   const [lang, setLang] = useState<Language>('CZ');
@@ -49,12 +51,14 @@ function App() {
         - bg-slate-950 ensures it's opaque and covers the hero as it scrolls up.
       */}
       <div className="relative z-10 bg-slate-900 mt-[100vh] shadow-[0_-20px_50px_rgba(0,0,0,0.8)] border-t border-slate-900/50">
-        <Services lang={lang} />
-        <FeaturedProjects lang={lang} />
-        <WhyUs lang={lang} />
-        <Technologies lang={lang} />
-        <Contact lang={lang} />
-        <Footer lang={lang} />
+        <Suspense fallback={<div className="min-h-screen bg-slate-950" />}>
+          <Services lang={lang} />
+          <FeaturedProjects lang={lang} />
+          <WhyUs lang={lang} />
+          <Technologies lang={lang} />
+          <Contact lang={lang} />
+          <Footer lang={lang} />
+        </Suspense>
       </div>
     </div>
   );

@@ -37,6 +37,12 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
       const scrollY = window.scrollY;
       const windowHeight = window.innerHeight;
 
+      // Skip expensive updates when hero is fully hidden behind content
+      if (scrollY > windowHeight * 1.2) {
+        animationFrameId = requestAnimationFrame(updateParallax);
+        return;
+      }
+
       // Calculate scroll progress (0 to 1) for the hero section
       const scrollProgress = Math.min(scrollY / windowHeight, 1);
 
@@ -135,7 +141,7 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
 
         {/* Vignette & Texture */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,#020617_100%)]"></div>
-        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20 mix-blend-overlay"></div>
+        <div className="absolute inset-0 opacity-20 mix-blend-overlay" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4'%3E%3Crect width='4' height='4' fill='%23000'/%3E%3Crect width='1' height='1' fill='%23111'/%3E%3Crect x='2' y='2' width='1' height='1' fill='%23111'/%3E%3C/svg%3E")` }}></div>
       </div>
 
       {/* Main Content Layer */}

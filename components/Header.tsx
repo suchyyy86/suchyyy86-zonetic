@@ -18,9 +18,13 @@ const Header: React.FC<HeaderProps> = ({ lang, setLang, onNavigate }) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      const scrolled = window.scrollY > 20;
+      setIsScrolled(prev => {
+        if (prev !== scrolled) return scrolled;
+        return prev;
+      });
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 

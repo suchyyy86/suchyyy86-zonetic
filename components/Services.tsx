@@ -25,14 +25,16 @@ interface ServiceCardProps {
 }
 
 const ServiceCard: React.FC<ServiceCardProps> = ({ service, index, isVisible, lang, isActive, onClick }) => {
-  const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState(false);
   const divRef = useRef<HTMLDivElement>(null);
+  const spotlightRef = useRef<HTMLDivElement>(null);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!divRef.current) return;
+    if (!divRef.current || !spotlightRef.current) return;
     const rect = divRef.current.getBoundingClientRect();
-    setPosition({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    spotlightRef.current.style.background = `radial-gradient(600px circle at ${x}px ${y}px, rgba(20, 184, 166, 0.15), transparent 40%)`;
   };
 
   const renderDescription = (text: string) => {
@@ -76,10 +78,8 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, index, isVisible, la
 
       {/* --- Hover State: Dynamic Spotlight --- */}
       <div
+        ref={spotlightRef}
         className="pointer-events-none absolute -inset-px opacity-0 transition duration-500 group-hover:opacity-100 group-data-[active=true]:opacity-100"
-        style={{
-          background: `radial-gradient(600px circle at ${position.x}px ${position.y}px, rgba(20, 184, 166, 0.15), transparent 40%)`
-        }}
       />
 
       <div className="relative h-full p-8 flex flex-col z-10">

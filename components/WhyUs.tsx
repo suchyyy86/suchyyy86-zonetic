@@ -81,9 +81,13 @@ const WhyUs: React.FC<BenefitsProps> = ({ lang }) => {
   // 2. The Physics Loop (Pixel-perfect synchronization)
   useEffect(() => {
     let rAFId: number;
+    let isVisible = false;
 
     const update = () => {
-      if (!containerRef.current || !beamRef.current || !trackRef.current) return;
+      if (!isVisible || !containerRef.current || !beamRef.current || !trackRef.current) {
+        // Don't schedule next frame if not visible
+        return;
+      }
 
       const trackRect = trackRef.current.getBoundingClientRect();
       const windowHeight = window.innerHeight;
@@ -174,8 +178,25 @@ const WhyUs: React.FC<BenefitsProps> = ({ lang }) => {
       rAFId = requestAnimationFrame(update);
     };
 
-    rAFId = requestAnimationFrame(update);
-    return () => cancelAnimationFrame(rAFId);
+    // Only run rAF loop when section is visible
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isVisible = entry.isIntersecting;
+        if (isVisible) {
+          rAFId = requestAnimationFrame(update);
+        }
+      },
+      { rootMargin: '100px' }
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => {
+      cancelAnimationFrame(rAFId);
+      observer.disconnect();
+    };
   }, []);
 
   const icons = [

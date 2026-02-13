@@ -31,8 +31,7 @@ const ICON_MAP: Record<string, React.ElementType> = {
   'Figma': SiFigma,
   'Meta Business Suite': SiMeta,
   'PostgreSQL': SiPostgresql,
-  'Docker': SiDocker,
-  'AI': SiOpenai
+  'Docker': SiDocker
 };
 
 // Define network connections (who connects to whom)
@@ -42,6 +41,8 @@ const CONNECTIONS = [
   ['React', 'Tailwind'],
   ['Next.js', 'Node.js'],
   ['Next.js', 'Tailwind'],
+  ['Next.js', 'TypeScript'], // New: TS is core to Next.js
+  ['Next.js', 'AWS'],        // New: Deployment target
   ['TypeScript', 'Node.js'],
   ['Node.js', 'PostgreSQL'],
   ['Node.js', 'Docker'],
@@ -50,22 +51,22 @@ const CONNECTIONS = [
   ['AWS', 'Docker'],
   ['Figma', 'React'],
   ['Figma', 'Tailwind'],
-  ['Meta Business Suite', 'React']
+  ['Figma', 'Meta Business Suite'], // New: Design -> Marketing
+  ['Meta Business Suite', 'React']  // Integrations
 ];
 
 // Orchestrated positions for "Constellation" look
 const FIXED_POSITIONS: Record<string, { x: number, y: number }> = {
   'React': { x: 0.5, y: 0.45 },
   'Next.js': { x: 0.38, y: 0.35 },
-  'TypeScript': { x: 0.62, y: 0.35 },
+  'TypeScript': { x: 0.62, y: 0.355 }, // slightly offset
   'Tailwind': { x: 0.5, y: 0.25 },
   'Node.js': { x: 0.5, y: 0.65 },
   'AWS': { x: 0.70, y: 0.70 },
   'PostgreSQL': { x: 0.35, y: 0.75 },
   'Docker': { x: 0.55, y: 0.82 },
-  'Figma': { x: 0.25, y: 0.45 },
-  'Meta Business Suite': { x: 0.75, y: 0.45 },
-  'AI': { x: 0.5, y: 0.55 }
+  'Figma': { x: 0.25, y: 0.44 }, // slightly offset
+  'Meta Business Suite': { x: 0.75, y: 0.46 } // slightly offset
 };
 
 // Mobile positions - spread out for narrow portrait layout
@@ -79,8 +80,7 @@ const MOBILE_POSITIONS: Record<string, { x: number, y: number }> = {
   'PostgreSQL': { x: 0.20, y: 0.66 },
   'Docker': { x: 0.5, y: 0.78 },
   'Figma': { x: 0.13, y: 0.44 },
-  'Meta Business Suite': { x: 0.87, y: 0.44 },
-  'AI': { x: 0.5, y: 0.44 }
+  'Meta Business Suite': { x: 0.87, y: 0.45 } // slightly offset
 };
 
 interface Node {
@@ -325,14 +325,14 @@ const Technologies: React.FC<TechStackProps> = ({ lang }) => {
           <svg ref={svgRef} className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-visible">
             <defs>
               <linearGradient id="line-gradient-base" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="rgba(20, 184, 166, 0.2)" />
-                <stop offset="50%" stopColor="rgba(20, 184, 166, 0.45)" />
-                <stop offset="100%" stopColor="rgba(20, 184, 166, 0.2)" />
+                <stop offset="0%" stopColor="rgba(20, 184, 166, 0.3)" />
+                <stop offset="50%" stopColor="rgba(20, 184, 166, 0.6)" />
+                <stop offset="100%" stopColor="rgba(20, 184, 166, 0.3)" />
               </linearGradient>
               <linearGradient id="line-gradient-active" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="rgba(20, 184, 166, 0.3)" />
-                <stop offset="50%" stopColor="rgba(20, 184, 166, 0.9)" />
-                <stop offset="100%" stopColor="rgba(20, 184, 166, 0.3)" />
+                <stop offset="0%" stopColor="rgba(20, 184, 166, 0.5)" />
+                <stop offset="50%" stopColor="rgba(20, 184, 166, 1)" />
+                <stop offset="100%" stopColor="rgba(20, 184, 166, 0.5)" />
               </linearGradient>
             </defs>
             <g
@@ -362,15 +362,15 @@ const Technologies: React.FC<TechStackProps> = ({ lang }) => {
                       x2={x2}
                       y2={y2}
                       stroke={isConnectedToHover ? "url(#line-gradient-active)" : "url(#line-gradient-base)"}
-                      strokeWidth={isConnectedToHover ? 2.5 : 1.5}
-                      opacity={isDimmed ? 0.08 : (isConnectedToHover ? 1 : 0.35)}
+                      strokeWidth={isConnectedToHover ? 3 : 2}
+                      opacity={isDimmed ? 0.1 : (isConnectedToHover ? 1 : 0.6)}
                       style={{
                         transition: 'opacity 0.4s ease, stroke-width 0.4s ease',
                         filter: isConnectedToHover ? 'drop-shadow(0 0 4px rgba(20, 184, 166, 0.4))' : 'none'
                       }}
                     />
                     {/* Data Packet Animation (on hover or ambient) */}
-                    {(isConnectedToHover || (!hoveredNode && i % 3 === 0)) && dimensions.width > 0 && (
+                    {(isConnectedToHover || (!hoveredNode && i % 2 === 0)) && dimensions.width > 0 && (
                       <circle r="2" fill="#14b8a6" opacity={isConnectedToHover ? 0.9 : 0.4}>
                         <animateMotion
                           dur={`${2 + (i % 3)}s`}

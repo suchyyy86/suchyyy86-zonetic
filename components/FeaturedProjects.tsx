@@ -16,12 +16,14 @@ const icons = [
 
 const ProjectCard: React.FC<{ project: ProjectData; index: number; isVisible: boolean; lang: Language }> = ({ project, index, isVisible, lang }) => {
   const divRef = useRef<HTMLDivElement>(null);
-  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const spotlightRef = useRef<HTMLDivElement>(null);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!divRef.current) return;
+    if (!divRef.current || !spotlightRef.current) return;
     const rect = divRef.current.getBoundingClientRect();
-    setPosition({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    spotlightRef.current.style.background = `radial-gradient(600px circle at ${x}px ${y}px, rgba(20, 184, 166, 0.15), transparent 40%)`;
   };
 
   return (
@@ -40,10 +42,8 @@ const ProjectCard: React.FC<{ project: ProjectData; index: number; isVisible: bo
 
       {/* Hover Gradient Spotlight */}
       <div
+        ref={spotlightRef}
         className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-        style={{
-          background: `radial-gradient(600px circle at ${position.x}px ${position.y}px, rgba(20, 184, 166, 0.15), transparent 40%)`
-        }}
       />
 
       {/* Content */}

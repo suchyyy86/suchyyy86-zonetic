@@ -242,8 +242,15 @@ const Benefits: React.FC<BenefitsProps> = ({ lang }) => {
                 style={{ height: '0px' }}
               >
                 {/* The Laser Head Tip */}
-                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[2px] h-[15px] md:w-[4px] md:h-[30px] bg-white blur-[2px] md:blur-[4px] rounded-full translate-y-1/2" />
-                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-4 md:w-8 md:h-8 bg-teal-300 blur-sm md:blur-md rounded-full translate-y-1/2" />
+                {/* iOS Fix: Use shadow instead of blur on mobile to prevent clipping "box" artifacts */}
+                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 rounded-full
+                                w-[2px] h-[15px] bg-white shadow-[0_0_5px_rgba(255,255,255,0.8)]
+                                md:w-[4px] md:h-[30px] md:blur-[4px] md:shadow-none"
+                />
+                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 rounded-full
+                                w-4 h-4 bg-teal-300 shadow-[0_0_15px_rgba(20,184,166,0.6)]
+                                md:w-8 md:h-8 md:blur-md md:shadow-none"
+                />
                 <div className="hidden md:block absolute bottom-0 left-1/2 -translate-x-1/2 w-16 h-16 bg-teal-400/30 blur-xl rounded-full translate-y-1/2" />
               </div>
             </div>

@@ -22,35 +22,44 @@ export const CONTENT = {
     ctaSecondary: { CZ: 'Prohlédnout demo', EN: 'View Demo' }
   },
   showcase: {
-    headline: { CZ: 'Naše Standardy', EN: 'Our Standards' },
-    subheadline: { CZ: 'Vybrané technologické koncepty', EN: 'Selected Technological Concepts' },
+    headline: { CZ: 'Zonetic Lab', EN: 'Zonetic Lab' },
+    subheadline: { CZ: 'Interaktivní technologická dema', EN: 'Interactive Technology Demos' },
     projects: [
       {
-        id: 'hostinec',
-        title: { CZ: 'Hostinec U Tří Lip: Gastro UX', EN: 'The Three Lindens: Gastro UX' },
+        id: 'eshop',
+        title: { CZ: 'The Instant E-shop', EN: 'The Instant E-shop' },
         description: {
-          CZ: 'Redesign webu pro moderní českou gastronomii. 100% Mobile-first zážitek, HTML jídelní lístek místo PDF pro perfektní SEO a storytelling, který plní stoly.',
-          EN: 'Web redesign for modern Czech cuisine. 100% Mobile-first experience, HTML menu instead of PDF for perfect SEO, and storytelling that fills tables.'
+          CZ: 'Rychlost prodává. Zažijte okamžité načítání a plynulé animace. Headless architektura, která promění návštěvníky v zákazníky.',
+          EN: 'Speed sells. Experience instant loading and smooth animations. Headless architecture that converts visitors into customers.'
         },
-        tags: ['HORECA', 'Local SEO', 'Mobile-First']
+        tags: ['Headless', '3D Model', 'Performance']
       },
       {
-        id: 'saas',
-        title: { CZ: 'Projekt B: SaaS Dashboard Core', EN: 'Project B: SaaS Dashboard Core' },
+        id: 'reservation',
+        title: { CZ: 'Real-time Rezervace', EN: 'Real-time Reservations' },
         description: {
-          CZ: 'Komplexní webová aplikace s intuitivním UX pro správu podnikových dat. Čistý kód zajišťující stabilitu i při vysoké zátěži.',
-          EN: 'Complex web application with intuitive UX for enterprise data management. Clean code ensuring stability even under high load.'
+          CZ: 'Data vždy aktuální, všude a hned. Změna na mobilu se okamžitě projeví na desktopu. Žádné obnovování, žádné chyby.',
+          EN: 'Data always current, everywhere, instantly. Changes on mobile reflect immediately on desktop. No refreshes, no errors.'
         },
-        tags: ['SaaS', 'B2B', 'React']
+        tags: ['Real-time', 'WebSocket', 'Cloud']
       },
       {
-        id: 'corporate',
-        title: { CZ: 'Projekt C: Corporate Identity 2.0', EN: 'Project C: Corporate Identity 2.0' },
+        id: 'ai-gen',
+        title: { CZ: 'AI Generátor Obsahu', EN: 'AI Content Generator' },
         description: {
-          CZ: 'Interaktivní korporátní prezentace zaměřená na budování autority značky. Animace s nulovým dopadem na výkon zařízení.',
-          EN: 'Interactive corporate presentation focused on building brand authority. Animations with zero impact on device performance.'
+          CZ: 'Méně rutiny, více prodejů. Zadejte pár klíčových slov a nechte AI vytvořit atraktivní prodejní texty během vteřin.',
+          EN: 'Less routine, more sales. Enter a few keywords and let AI create attractive sales copy in seconds.'
         },
-        tags: ['Branding', 'Motion', 'Corporate']
+        tags: ['AI', 'Automation', 'OpenAI']
+      },
+      {
+        id: 'dashboard',
+        title: { CZ: 'Interaktivní Dashboard', EN: 'Interactive Dashboard' },
+        description: {
+          CZ: 'Přehled nad firmou jedním pohledem. Čistý design a intuitivní ovládání pro vaše interní systémy a klientské zóny.',
+          EN: 'Company overview at a glance. Clean design and intuitive controls for your internal systems and client zones.'
+        },
+        tags: ['UX/UI', 'Dashboard', 'Analytics']
       }
     ] as ProjectData[]
   },

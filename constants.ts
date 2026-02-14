@@ -176,7 +176,7 @@ export const CONTENT = {
     },
     info: {
       email: 'info@zonetic.cz',
-      phone: '+420 123 456 789'
+      phone: '+420 721 169 155'
     }
   },
   footer: {

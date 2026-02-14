@@ -25,6 +25,7 @@ export default async function handler(req, res) {
             });
 
             if (error) {
+                console.error('Resend API Error:', error);
                 return res.status(400).json({ error });
             }
 

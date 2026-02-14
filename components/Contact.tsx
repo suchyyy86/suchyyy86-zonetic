@@ -166,27 +166,44 @@ const Contact: React.FC<ContactProps> = ({ lang }) => {
     setErrors(newErrors);
 
     if (Object.values(newErrors).every(err => err === undefined)) {
-      // Simulate submission
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      console.log('Form submitted:', formData);
-      // Reset form or show success message here
-      alert(lang === 'CZ' ? 'Děkujeme za zprávu!' : 'Thank you for your message!');
-      setFormData({
-        name: '',
-        company: '',
-        email: '',
-        phone: '',
-        service: CONTENT.contact.form.serviceOptions[0][lang],
-        message: '',
-      });
-      setTouched({
-        name: false,
-        company: false,
-        email: false,
-        phone: false,
-        service: false,
-        message: false,
-      });
+      try {
+        const response = await fetch('/api/send', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        });
+
+        const data = await response.json();
+
+        if (response.ok && !data.error) {
+          console.log('Form submitted:', data);
+          alert(lang === 'CZ' ? 'Děkujeme za zprávu! Brzy se vám ozveme.' : 'Thank you! We will get back to you soon.');
+
+          setFormData({
+            name: '',
+            company: '',
+            email: '',
+            phone: '',
+            service: CONTENT.contact.form.serviceOptions[0][lang],
+            message: '',
+          });
+          setTouched({
+            name: false,
+            company: false,
+            email: false,
+            phone: false,
+            service: false,
+            message: false,
+          });
+        } else {
+          throw new Error(data.error?.message || 'Submission failed');
+        }
+      } catch (error) {
+        console.error('Submission error:', error);
+        alert(lang === 'CZ' ? 'Omlouváme se, něco se pokazilo. Zkuste to prosím později.' : 'Sorry, something went wrong. Please try again later.');
+      }
     }
     setIsSubmitting(false);
   };

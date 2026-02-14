@@ -12,8 +12,8 @@ export default async function handler(req, res) {
             const { name, email, message, service, company, phone } = req.body;
 
             const { data, error } = await resend.emails.send({
-                from: 'Zonetic Contact Form <onboarding@resend.dev>', // Keep this until domain verification
-                to: ['mariuszsuchanek@gmail.com'], // Replace with your actual email
+                from: 'Zonetic Contact Form <info@zonetic.cz>',
+                to: ['mariusz.s1800@gmail.com'],
                 subject: `New Contact Form Submission | ${name}`,
                 html: `
           <h1>New Inquiry from Zonetic Web</h1>

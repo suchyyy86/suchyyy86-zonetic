@@ -4,6 +4,10 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 export default async function handler(req, res) {
     if (req.method === 'POST') {
+        if (!process.env.RESEND_API_KEY) {
+            console.error('Missing RESEND_API_KEY environment variable');
+            return res.status(500).json({ error: 'Server configuration error: Missing API Key' });
+        }
         try {
             const { name, email, message, service, company, phone } = req.body;
 

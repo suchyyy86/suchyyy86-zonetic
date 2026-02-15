@@ -261,14 +261,14 @@ const Contact: React.FC<ContactProps> = ({ lang }) => {
                 <>
                   Máte vizi?<br />
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-teal-200">
-                    My máme technologii.
+                    My ji proměníme v realitu.
                   </span>
                 </>
               ) : (
                 <>
                   Have a vision?<br />
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-teal-200">
-                    We have the technology.
+                    We turn it into reality.
                   </span>
                 </>
               )}

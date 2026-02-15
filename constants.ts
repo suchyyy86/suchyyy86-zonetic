@@ -147,10 +147,10 @@ export const CONTENT = {
     technologies: ['React', 'Next.js', 'TypeScript', 'Node.js', 'AWS', 'Tailwind', 'Figma', 'Meta Business Suite', 'PostgreSQL', 'Docker']
   },
   contact: {
-    headline: { CZ: 'Máte vizi? My máme technologii.', EN: "Have a vision? We have the technology." },
+    headline: { CZ: 'Máte vizi? My ji proměníme v realitu.', EN: "Have a vision? We turn it into reality." },
     subheadline: {
-      CZ: 'Napište nám. Společně ji proměníme v realitu.',
-      EN: 'Write to us. Together we will turn it into reality.'
+      CZ: 'Napište nám. Vaše nápady, náš kód, společný úspěch.',
+      EN: 'Write to us. Your ideas, our code, shared success.'
     },
     form: {
       name: { CZ: 'Jméno', EN: 'Name' },

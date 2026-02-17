@@ -39,7 +39,7 @@ const ICON_MAP: Record<string, React.ElementType> = {
 const CONNECTIONS = [
   // 1. Design Branch (Input)
   ['Figma', 'Tailwind'],    // Design -> Style
-  ['Figma', 'React'],       // Design -> Component
+  ['Tailwind', 'React'],    // Style -> Component
 
   // 2. Development Core (Logic)
   ['TypeScript', 'React'],   // Type safety
